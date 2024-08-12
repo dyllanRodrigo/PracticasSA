@@ -1,13 +1,15 @@
 {
-    "name": "auth-service",
-    "version": "1.0.0",
-    "description": "",
-    "main": "src/app.js",
-    "scripts": {
-      "start": "node src/app.js"
-    },
-    "dependencies": {
-      "express": "^4.17.1"
-    }
-  }
-  
+  "name": "auth-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.3"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "dyllgold",
+  "license": "ISC"
+}

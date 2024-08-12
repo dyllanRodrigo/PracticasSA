@@ -2,8 +2,10 @@ POST
 http://localhost:8080/auth/register
 
 {
-  "username": "user",
-  "password": "pass"
+  "username": "admin",
+  "password": "12345678",
+  "email": "admin@admin.com",
+  "rol": "administrator"
 }
 
 http://localhost:8080/appointments/appointments
