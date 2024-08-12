@@ -221,8 +221,16 @@ volumes:
 
 ```
 
-● Diagrama de Arquitectura
+## Diagrama de Arquitectura
+![image](https://github.com/user-attachments/assets/033f9230-cf6a-4434-be46-fb0e54ee750f)
 
-● Diagrama ER
+## Diagrama ER
 
+En esta practica:
+<br>
+![image](https://github.com/user-attachments/assets/b902cf34-a43d-4f0c-aac4-6dfb993409ee)
+
+En general:
+<br>
+![image](https://github.com/user-attachments/assets/5163f476-7e11-4999-b1ca-b284603c119c)
 
