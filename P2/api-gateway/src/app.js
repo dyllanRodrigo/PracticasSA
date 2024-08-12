@@ -34,7 +34,6 @@ app.use('/:service/*', (req, res) => {
     }
 });
 
-
 app.listen(port, () => {
     console.log(`API Gateway listening at http://localhost:${port}`);
 });

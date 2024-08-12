@@ -1,15 +1,13 @@
 package com.example.appointmentservice;
 
 public class Appointment {
+
+    private Long id;
     private String patientId;
     private String date;
     private String description;
 
-    // Constructor vacío (necesario para la deserialización)
-    public Appointment() {
-    }
-
-    // Constructor completo (puede ser utilizado para crear objetos en el código)
+    // Constructor
     public Appointment(String patientId, String date, String description) {
         this.patientId = patientId;
         this.date = date;
@@ -17,6 +15,14 @@ public class Appointment {
     }
 
     // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getPatientId() {
         return patientId;
     }

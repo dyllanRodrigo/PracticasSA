@@ -1,9 +1,24 @@
 version: '3.8'
+
 services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: soa_database
+      MYSQL_PASSWORD: 12345678
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
   api-gateway:
     build: ./api-gateway
     ports:
       - "8080:8080"
+    depends_on:
+      - appointment-service
 
   auth-service:
     build: ./auth-service
@@ -19,6 +34,10 @@ services:
     build: ./appointment-service
     ports:
       - "3003:3002"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/soa_database
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 12345678
 
   treatment-service:
     build: ./treatment-service
@@ -29,4 +48,8 @@ services:
     build: ./reminder-service
     ports:
       - "3005:3004"
+
+volumes:
+  mysql_data:
+
 

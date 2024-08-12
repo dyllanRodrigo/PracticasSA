@@ -1,2 +1,4 @@
 com\example\appointmentservice\AppointmentController.class
 com\example\appointmentservice\AppointmentServiceApplication.class
+com\example\appointmentservice\AppointmentService.class
+com\example\appointmentservice\Appointment.class
