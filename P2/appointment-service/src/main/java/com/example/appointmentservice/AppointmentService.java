@@ -1,24 +1,27 @@
 package com.example.appointmentservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
-
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import javax.sql.DataSource;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AppointmentService {
 
     private final SimpleJdbcInsert simpleJdbcInsert;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public AppointmentService(DataSource dataSource) {
         this.simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
             .withTableName("appointments")
             .usingGeneratedKeyColumns("id");
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public void insertAppointment(Appointment appointment) {
@@ -31,9 +34,20 @@ public class AppointmentService {
         appointment.setId(newId.longValue());
     }
 
-    // Método para obtener todas las citas (si lo necesitas)
+    // Método para obtener todas las citas
     public List<Appointment> getAllAppointments() {
-        // Implementa la lógica de obtención si lo necesitas
-        return null;
+        String sql = "SELECT * FROM appointments";
+
+        RowMapper<Appointment> rowMapper = (rs, rowNum) -> {
+            Appointment appointment = new Appointment(
+                rs.getString("patient_id"),
+                rs.getString("date"),
+                rs.getString("description")
+            );
+            appointment.setId(rs.getLong("id"));
+            return appointment;
+        };
+
+        return jdbcTemplate.query(sql, rowMapper);
     }
 }

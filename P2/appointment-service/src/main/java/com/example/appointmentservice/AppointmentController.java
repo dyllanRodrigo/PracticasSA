@@ -18,7 +18,6 @@ public class AppointmentController {
         return "Cita creada con ID: " + appointment.getId();
     }
 
-    // Opcional, si implementas el método en el servicio
     @GetMapping
     public List<Appointment> getAppointments() {
         return appointmentService.getAllAppointments();
