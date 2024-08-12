@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8080:8080"
+
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "3001:3000"
+
+  patient-service:
+    build: ./patient-service
+    ports:
+      - "3002:3001"
+
+  appointment-service:
+    build: ./appointment-service
+    ports:
+      - "3003:3002"
+
+  treatment-service:
+    build: ./treatment-service
+    ports:
+      - "3004:3003"
+
+  reminder-service:
+    build: ./reminder-service
+    ports:
+      - "3005:3004"
+
